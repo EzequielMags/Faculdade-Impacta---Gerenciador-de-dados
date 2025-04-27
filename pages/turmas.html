@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>turmas</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="cabecalho-titulo">
+        <h2>Professores</h2>
+        <img src="../imgs/icons/school.png" alt="Icone de professores" />
+      </div>
+      <img
+        src="../imgs/image 1.png"
+        alt="logo da impacta"
+        class="cabecalho-logo"
+      />
+      <div class="cabecalho-menu">
+        <img src="../imgs/icons/menu.png" alt="Icone de busca" />
+        <div>
+          <a href="../index.html">home</a>
+          <a href="./alunos.html">alunos</a>
+          <a href="./professores.html">professores</a>
+          <a href="./turmas.html" class="ativo">turmas</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="turma-principal">
+        <form action="" class="formulario">
+          <h3>Cadastre um novo professor</h3>
+
+          <label for="numero">Nome da turma</label>
+          <input
+            class="input-formulario"
+            type="text"
+            id="numeroTurma"
+            placeholder="Digite o nome da turma"
+            required
+          />
+
+          <input type="submit" value="Enviar" class="btn-formulario-aluno" />
+        </form>
+      </section>
+      <section class="turma-secundario">
+        <h3>Lista de Turmas</h3>
+        <ul class="lista-Turmas">
+          <li>
+            <h4 class="lista-turma-titulo">Turma 2A</h4>
+            <h4 class="lista-turma-professor">Professor: Breno Gonçalves</h4>
+            <ul class="lista-turma-alunos">
+              <h4>Alunos:</h4>
+              <li>
+                <p>Ezequiel Magoga</p>
+              </li>
+              <li>
+                <p>Ezequiel Magoga</p>
+              </li>
+              <li>
+                <p>Ezequiel Magoga</p>
+              </li>
+
+              <li>
+                <p>Ezequiel Magoga</p>
+              </li>
+
+              <li>
+                <p>Ezequiel Magoga</p>
+              </li>
+              <li>
+                <p>Ezequiel Magoga</p>
+              </li>
+            </ul>
+            <div class="lista-turma-icones">
+              <img src="../imgs/icons/trash.svg" alt="Icone de deletar" />
+              <img src="../imgs/icons/pencil-fill.svg" alt="Icone de editar" />
+            </div>
+          </li>
+
+          <!--criando uma nova turma sem dados-->
+          <li>
+            <h4 class="lista-turma-titulo">Turma 2B</h4>
+            <h4 class="lista-turma-professor">Professor: Sem Professor</h4>
+            <ul class="lista-turma-alunos">
+              <h4>Alunos:</h4>
+            </ul>
+
+            <div class="lista-turma-icones">
+              <img src="../imgs/icons/trash.svg" alt="Icone de deletar" />
+              <img src="../imgs/icons/pencil-fill.svg" alt="Icone de editar" />
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

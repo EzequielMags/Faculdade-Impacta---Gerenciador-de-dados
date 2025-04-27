@@ -1,0 +1,217 @@
+/*Cabecalho*/
+
+.cabecalho {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0rem 2rem;
+}
+
+.cabecalho-titulo {
+  display: none;
+}
+
+.cabecalho-menu img {
+  position: absolute;
+  top: 1.7rem;
+  right: 4rem;
+  cursor: pointer;
+}
+
+.cabecalho-menu div {
+  display: none;
+}
+
+/*Principal professores*/
+
+/*Formulario*/
+
+.formulario {
+  width: 80%;
+  background-color: rgba(217, 217, 217, 0.01);
+  display: flex;
+  margin: 5rem auto;
+  flex-direction: column;
+  gap: 1rem;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.formulario h3 {
+  margin: 2rem 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.formulario label {
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 3rem 0 0.5rem 0;
+}
+
+.formulario .input-formulario {
+  width: 90%;
+  padding: 1rem;
+  margin: 0 auto;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 6px;
+  background-color: rgba(217, 217, 217, 0.1);
+  color: var(--cor-branca);
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.btn-formulario-professor {
+  margin: 3.5rem auto;
+  width: 50%;
+  padding: 1rem 0;
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: var(--fonte-principal);
+  border: none;
+  border-radius: 6px;
+  outline: none;
+}
+
+/*Lista de professores*/
+
+.professores-secundario h3 {
+  text-align: center;
+  margin: 6rem 0;
+}
+
+.lista-professores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 0 1rem;
+  overflow-y: scroll;
+}
+
+.lista-professores li {
+  width: 70%;
+  background-color: rgba(217, 217, 217, 0.01);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    " nome nome turma "
+    "ra ra icones";
+
+  border: 2px solid var(--cor-primaria);
+  border-radius: 6px;
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+.lista-professores li h4 {
+  grid-area: nome;
+}
+
+.lista-professores li p {
+  grid-area: ra;
+}
+
+.lista-professores li h2 {
+  grid-area: turma;
+}
+
+.lista-professores li h2 a {
+  text-decoration: none;
+  color: var(--cor-branca);
+}
+
+.lista-professores li div {
+  grid-area: icones;
+  display: flex;
+  gap: 3rem;
+}
+
+.lista-professores li div img {
+  width: 25%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 830px) {
+  /*Cabecalho*/
+  .cabecalho {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    gap: 10rem;
+  }
+
+  .cabecalho-titulo {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .cabecalho-titulo h2 {
+    font-size: 1.8rem;
+  }
+
+  /*Principal professores*/
+  /*Formulario*/
+  .formulario label {
+    padding-left: 2rem;
+  }
+  .formulario .input-formulario {
+    width: 80%;
+    padding: 1.5rem;
+  }
+
+  /*Lista de professores*/
+  .lista-professores {
+    height: 50vh;
+    overflow-y: scroll;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  }
+  ::-webkit-scrollbar-thumb {
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /*Cabecalho*/
+  .cabecalho-menu div {
+    display: flex;
+    gap: 3rem;
+  }
+  .cabecalho-menu div a {
+    font-size: 1.5rem;
+    color: var(--cor-branca);
+    text-decoration: none;
+  }
+
+  .cabecalho-menu div a:hover {
+    color: var(--cor-primaria);
+    transition: 0.3s;
+  }
+
+  .cabecalho-menu div a.ativo {
+    color: var(--cor-primaria);
+  }
+
+  .cabecalho-menu img {
+    display: none;
+  }
+  /*Principal professores*/
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  /*Formulario*/
+
+  .btn-formulario-aluno {
+    width: 20%;
+    margin: 3.5rem 8rem;
+  }
+}

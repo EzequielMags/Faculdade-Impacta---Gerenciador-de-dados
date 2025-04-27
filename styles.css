@@ -1,0 +1,34 @@
+@import url(css/tela-principal.css);
+@import url(css/tela-aluno.css);
+@import url(css/tela-professores.css);
+@import url(css/tela-turmas.css);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+:root {
+  --cor-branca: #fff;
+  --cor-fundo: #1f1f1f;
+  --cor-primaria: #0189f9;
+  --fonte-principal: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-branca);
+  font-family: var(--fonte-principal);
+  font-weight: 600;
+  animation: fadeIn 0.5s ease-in-out;
+}

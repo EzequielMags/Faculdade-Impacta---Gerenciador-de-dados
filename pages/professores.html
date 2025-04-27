@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>professores</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="cabecalho-titulo">
+        <h2>Professores</h2>
+        <img src="../imgs/icons/school.png" alt="Icone de professores" />
+      </div>
+      <img
+        src="../imgs/image 1.png"
+        alt="logo da impacta"
+        class="cabecalho-logo"
+      />
+      <div class="cabecalho-menu">
+        <img src="../imgs/icons/menu.png" alt="Icone de busca" />
+        <div>
+          <a href="../index.html">home</a>
+          <a href="./alunos.html">alunos</a>
+          <a href="./professores.html" class="ativo">professores</a>
+          <a href="./turmas.html">turmas</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="professores-principal">
+        <form action="" class="formulario">
+          <h3>Cadastre um novo professor</h3>
+
+          <label for="nome">Nome do Professor</label>
+          <input
+            class="input-formulario"
+            type="text"
+            id="nomeProfessor"
+            placeholder="Digite o nome e sobrenome"
+            required
+          />
+
+          <label for="email">Email do Professor</label>
+          <input
+            class="input-formulario"
+            type="email"
+            id="emailProfessor"
+            placeholder="Email"
+            maxlength="7"
+            required
+          />
+          <label for="turma">Turma do Professor</label>
+          <select name="turma" id="turmaSelect" class="input-formulario">
+            <option value="">Selecione uma turma</option>
+          </select>
+
+          <input type="submit" value="Enviar" class="btn-formulario-aluno" />
+        </form>
+      </section>
+      <section class="professores-secundario">
+        <h3>Lista de professores</h3>
+        <ul class="lista-professores">
+          <li>
+            <h4>Breno Gonçalves</h4>
+            <p>breno.goncalves@impacta.com.br</p>
+            <h2>
+              <a href="#">Turma 2A</a>
+            </h2>
+            <div>
+              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+              <img
+                src="../imgs/icons/pencil-fill.svg"
+                alt="icone de editar"
+              />
+          </li>
+          <li>
+            <h4>Breno Gonçalves</h4>
+            <p>breno.goncalves@impacta.com.br</p>
+            <h2>
+              <a href="#">Turma 2A</a>
+            </h2>
+            <div>
+              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+              <img
+                src="../imgs/icons/pencil-fill.svg"
+                alt="icone de editar"
+              />
+            </div>
+          </li>
+          <li>
+            <h4>Breno Gonçalves</h4>
+            <p>breno.goncalves@impacta.com.br</p>
+            <h2>
+              <a href="#">Turma 2A</a>
+            </h2>
+            <div>
+              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+              <img
+                src="../imgs/icons/pencil-fill.svg"
+                alt="icone de editar"
+              />
+          </li>
+          <li>
+            <h4>Breno Gonçalves</h4>
+            <p>breno.goncalves@impacta.com.br</p>
+            <h2>
+              <a href="#">Turma 2A</a>
+            </h2>
+            <div>
+                <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+                <img
+                  src="../imgs/icons/pencil-fill.svg"
+                  alt="icone de editar"
+                />
+              </div>
+          </li>
+          <li>
+            <h4>Breno Gonçalves</h4>
+            <p>breno.goncalves@impacta.com.br</p>
+            <h2>
+              <a href="#">Turma 2A</a>
+            </h2>
+            <div>
+              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+              <img
+                src="../imgs/icons/pencil-fill.svg"
+                alt="icone de editar"
+              />
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
