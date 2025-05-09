@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>turmas</title>
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../js/Turmas/main.js" defer type="module"></script>
   </head>
   <body>
     <header class="cabecalho">
       <div class="cabecalho-titulo">
-        <h2>Professores</h2>
-        <img src="../imgs/icons/school.png" alt="Icone de professores" />
+        <h2>Turmas</h2>
+        <img src="../imgs/icons/door_front.png" alt="Icone de Turmas" />
       </div>
       <img
         src="../imgs/image 1.png"
@@ -32,6 +33,8 @@
       <section class="turma-principal">
         <form action="" class="formulario">
           <h3>Cadastre um novo professor</h3>
+
+          <input type="hidden" id="idTurma" />
 
           <label for="numero">Nome da turma</label>
           <input

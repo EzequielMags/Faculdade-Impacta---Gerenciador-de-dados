@@ -92,50 +92,32 @@
 }
 
 .lista-alunos li {
-  width: 70%;
-  background-color: rgba(217, 217, 217, 0.01);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    " nome nome turma "
-    "ra ra icones";
-
+  margin: 0 auto;
+  width: 90%;
+  list-style: none;
   border: 2px solid var(--cor-primaria);
   border-radius: 6px;
-  padding: 2rem;
-  gap: 1.5rem;
+  padding: 5rem 0;
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
 }
 
-.lista-alunos li h4 {
-  grid-area: nome;
+.lista-alunos li div h4 {
+  padding: 0.5rem 0;
 }
-
-.lista-alunos li p {
-  grid-area: ra;
-}
-
-.lista-alunos li h2 {
-  grid-area: turma;
-}
-
-.lista-alunos li h2 a {
-  text-decoration: none;
-  color: var(--cor-branca);
-}
-
-.lista-alunos li div {
-  grid-area: icones;
+.lista-alunos-item-turma div {
+  padding-top: 3.8rem;
   display: flex;
-  align-items: centers;
   gap: 4rem;
 }
 
-.lista-alunos li div img {
-  width: 20%;
+.lista-alunos-item-turma div img {
+  display: flex;
+  width: 1.6rem;
   cursor: pointer;
 }
-
 @media screen and (min-width: 830px) {
   /*Cabecalho*/
   .cabecalho {
@@ -167,7 +149,7 @@
 
   /*Lista de Alunos*/
   .lista-alunos {
-    height: 50vh;
+    height: 80vh;
     overflow-y: scroll;
   }
   ::-webkit-scrollbar {
@@ -176,6 +158,18 @@
   ::-webkit-scrollbar-track {
   }
   ::-webkit-scrollbar-thumb {
+  }
+
+  .lista-alunos li {
+    padding: 3rem 0;
+    width: 90%;
+    height: 40%;
+  }
+
+  .lista-alunos-item-turma div img {
+    display: flex;
+    width: 2rem;
+    cursor: pointer;
   }
 }
 
@@ -213,5 +207,16 @@
   .btn-formulario-aluno {
     width: 20%;
     margin: 3.5rem 8rem;
+  }
+
+  .lista-alunos li {
+    height: 30%;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .lista-alunos li {
+    height: 40%;
   }
 }

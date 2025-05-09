@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../js/Alunos/main.js" type="module" defer></script>
   </head>
   <body>
     <header class="cabecalho">
@@ -39,6 +40,8 @@
         <form action="" class="formulario">
           <h3>Cadastre um novo aluno</h3>
 
+          <input type="hidden" id="idAluno" />
+
           <label for="nome">Nome do Aluno</label>
           <input
             class="input-formulario"
@@ -48,18 +51,49 @@
             required
           />
 
-          <label for="ra">RA do Aluno</label>
+          <label for="idade">Idade do Aluno</label>
           <input
             class="input-formulario"
             type="text"
-            id="raAluno"
-            placeholder="RA (máximo 7 dígitos)"
-            maxlength="7"
+            id="idadeAluno"
+            placeholder="Digite a idade"
+            required
+          />
+
+          <label for="data-nascimento">Data de nascimento do Aluno</label>
+          <input
+            class="input-formulario"
+            type="date"
+            id="nascimentoAluno"
+            placeholder="Data de nascimento"
+            required
+          />
+
+          <label for="nota-primeiro-semestre"
+            >Nota do primeiro semestre:
+          </label>
+          <input
+            class="input-formulario"
+            type="text"
+            id="notaPrimeiroSemestreInput"
+            placeholder="Nota do Primeiro Semestre"
+            required
+          />
+
+          <label for="nota-segundo-semestre">Nota do segundo semestre: </label>
+          <input
+            class="input-formulario"
+            type="text"
+            id="notaSegundoSemestreInput"
+            placeholder="Nota do Segundo Semestre"
             required
           />
           <label for="turma">Turma do Aluno</label>
           <select name="turma" id="turmaSelect" class="input-formulario">
             <option value="">Selecione uma turma</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
           </select>
 
           <input type="submit" value="Enviar" class="btn-formulario-aluno" />
@@ -69,58 +103,34 @@
         <h3>Lista de Alunos</h3>
         <ul class="lista-alunos">
           <li>
-            <h4>Ezequiel Magoga</h4>
-            <p>2403497</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="icone de editar" />
+            <div class="lista-alunos-item">
+              <h4>
+                <span id="nome-aluno">Ezequiel Magoga</span>
+              </h4>
+              <h4>
+                <span id="idade-aluno">19</span>
+              </h4>
+              <h4>
+                Notas:
+                <span id="aluno-nota-semestre1">10</span> |
+                <span id="aluno-nota-semestre2">10</span>
+              </h4>
+              <h4>
+                Média:
+                <span id="aluno-nota-media">10</span>
+              </h4>
             </div>
-          </li>
-          <li>
-            <h4>Ezequiel Magoga</h4>
-            <p>2403497</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="icone de editar" />
-            </div>
-          </li>
-          <li>
-            <h4>Ezequiel Magoga</h4>
-            <p>2403497</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="icone de editar" />
-            </div>
-          </li>
-          <li>
-            <h4>Ezequiel Magoga</h4>
-            <p>2403497</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="icone de editar" />
-            </div>
-          </li>
-          <li>
-            <h4>Ezequiel Magoga</h4>
-            <p>2403497</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="icone de editar" />
+            <div class="lista-alunos-item-turma">
+              <h4>
+                <span id="turma-aluno">Turma 2A</span>
+              </h4>
+              <div>
+                <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+                <img
+                  src="../imgs/icons/pencil-fill.svg"
+                  alt="icone de editar"
+                />
+              </div>
             </div>
           </li>
         </ul>
