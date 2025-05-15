@@ -1,11 +1,15 @@
 const apiProfessores = {
   async getProfessores() {
-    const api = await fetch(
-      "https://school-system-spi.onrender.com/api/professores/"
-    );
-    const response = await api.json();
-    console.log(response);
-    return response;
+    try {
+      const api = await fetch(
+        "https://school-system-spi.onrender.com/api/professores/"
+      );
+      const response = await api.json();
+      console.log(response);
+      return response;
+    } catch (error) {
+      alert("erro ao adicionar os professores", error);
+    }
   },
   async getProfessor(id_professor) {
     const api = await fetch(
@@ -16,19 +20,24 @@ const apiProfessores = {
     return response;
   },
   async postProfessor(professor) {
-    const api = await fetch(
-      "https://school-system-spi.onrender.com/api/professores/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(professor),
-      }
-    );
-    const response = await api.json();
-    console.log(response);
-    return response;
+    try {
+      const api = await fetch(
+        "https://school-system-spi.onrender.com/api/professores",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(professor),
+        }
+      );
+      const response = await api.json();
+      console.log(response);
+      return response;
+    } catch (error) {
+      alert("Erro ao enviar o Professor", error);
+      console.log(error);
+    }
   },
   async putProfessor(id_professor, professor) {
     const api = await fetch(

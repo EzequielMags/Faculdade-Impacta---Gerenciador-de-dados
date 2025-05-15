@@ -106,7 +106,13 @@
 
 .lista-alunos li div h4 {
   padding: 0.5rem 0;
+  color: var(--cor-primaria);
 }
+
+.lista-alunos li div h4 span {
+  color: var(--cor-branca);
+}
+
 .lista-alunos-item-turma div {
   padding-top: 3.8rem;
   display: flex;
@@ -210,8 +216,12 @@
   }
 
   .lista-alunos li {
-    height: 30%;
+    height: 50%;
     width: 100%;
+  }
+
+  .lista-alunos li div {
+    padding-left: 1rem;
   }
 }
 

@@ -1,4 +1,4 @@
-let URLBASE = "https://school-system-spi.onrender.com/api/alunos/";
+let URLBASE = "https://school-system-spi.onrender.com/api/alunos";
 
 const apiAlunos = {
   async getAlunos() {
@@ -15,7 +15,7 @@ const apiAlunos = {
   },
   async getAluno(id_aluno) {
     try {
-      const api = await fetch(`${URLBASE}${id_aluno}`);
+      const api = await fetch(`${URLBASE}/${id_aluno}`);
       const response = await api.json();
       console.log(response);
       return response;
@@ -25,25 +25,41 @@ const apiAlunos = {
     }
   },
   async putAluno(id_aluno, aluno) {
+    console.log(
+      "Tentando fazer requisição PUT para:",
+      `${URLBASE}/${id_aluno}`
+    );
+    console.log("Dados sendo enviados:", aluno);
     try {
-      const api = await fetch(`${URLBASE}${id_aluno}`, {
+      const api = await fetch(`${URLBASE}/${id_aluno}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(aluno),
       });
+
       const response = await api.json();
-      console.log(response);
+      console.log("Resposta do PUT:", response);
       return response;
     } catch (error) {
-      alert("erro ao atualizar aluno", error);
-      console.log(error);
+      console.error("Erro em putAluno:", error);
+      if (error.message === "Failed to fetch") {
+        console.error(
+          "Erro de rede - Por favor, verifique se o servidor da API está funcionando e acessível"
+        );
+        alert(
+          "Não foi possível conectar ao servidor. Verifique sua conexão com a internet e tente novamente."
+        );
+      } else {
+        alert(`Erro ao atualizar aluno: ${error.message}`);
+      }
+      throw error;
     }
   },
   async deleteAluno(id_aluno) {
     try {
-      const api = await fetch(`${URLBASE}${id_aluno}`, {
+      const api = await fetch(`${URLBASE}/${id_aluno}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

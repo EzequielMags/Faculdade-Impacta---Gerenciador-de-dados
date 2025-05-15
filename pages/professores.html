@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>professores</title>
     <link rel="stylesheet" href="../styles.css" />
-  </head>
+    <script src="../js/Professores/main.js" type="module" defer></script>
   <body>
     <header class="cabecalho">
       <div class="cabecalho-titulo">
@@ -33,6 +33,8 @@
         <form action="" class="formulario">
           <h3>Cadastre um novo professor</h3>
 
+          <input type="hidden" id="idProfessorInput">
+
           <label for="nome">Nome do Professor</label>
           <input
             class="input-formulario"
@@ -42,89 +44,76 @@
             required
           />
 
-          <label for="email">Materia do Professor</label>
+          <label for="idade">Idade do Professor</label>
           <input
             class="input-formulario"
-            type="email"
+            type="text"
+            id="idadeProfessor"
+            placeholder="Digite sua idade"
+            required
+          />
+
+          <label for="Materia">Materia do Professor</label>
+          <input
+            class="input-formulario"
+            type="text"
             id="materiaProfessor"
-            placeholder="Email"
-            maxlength="7"
+            placeholder="Materia"
+            
             required
           />
           <label for="turma">Observações</label>
-          <input type="observacoes" name="observacoes" id="observacoesProfessor">
-          <input type="submit" value="Enviar" class="btn-formulario-aluno" />
+          <input type="text" name="observacoes" id="observacoesProfessor" />
+
+          <input type="submit" value="Enviar" class="btn-formulario-aluno" id="btnEnviarProfessor" />
         </form>
       </section>
       <section class="professores-secundario">
         <h3>Lista de professores</h3>
         <ul class="lista-professores">
           <li>
-            <h4>Breno Gonçalves</h4>
-            <p>breno.goncalves@impacta.com.br</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
             <div>
+              <h4>Nome do professor: <span id="nomeProfessor">Caio</span></h3>
+              <h4>Materia: <span id="materiaProfessor">Matematica</span></h4>
+              <h4>Observações:</h4>
+              <p id="observacoesProfessor">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                veniam nesciunt, perspiciatis consequuntur odit libero alias
+                magnam nihil porro quas aliquid error rerum deleniti pariatur
+                in! Eveniet est quo accusantium.
+              </p>
+            </div>
+            <div class="professorIcones">
               <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
               <img
                 src="../imgs/icons/pencil-fill.svg"
                 alt="icone de editar"
-              />
-          </li>
-          <li>
-            <h4>Breno Gonçalves</h4>
-            <p>breno.goncalves@impacta.com.br</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img
-                src="../imgs/icons/pencil-fill.svg"
-                alt="icone de editar"
+                id="btnEditar"
+                class="btnEditar"
               />
             </div>
           </li>
           <li>
-            <h4>Breno Gonçalves</h4>
-            <p>breno.goncalves@impacta.com.br</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
             <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
+              <h4>Nome do professor: <span id="nomeProfessor">Caio</span></h3>
+              <h4>Materia: <span id="materiaProfessor">Matematica</span></h4>
+              <h4>Observações:</h4>
+              <p id="observacoesProfessor">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                veniam nesciunt, perspiciatis consequuntur odit libero alias
+                magnam nihil porro quas aliquid error rerum deleniti pariatur
+                in! Eveniet est quo accusantium.
+              </p>
+            </div>
+            <div class="professorIcones">
+              <img src="../imgs/icons/trash.svg" alt="icone de deletar" id="btnExcluir"/>
               <img
                 src="../imgs/icons/pencil-fill.svg"
                 alt="icone de editar"
+                id="btnEditar"
+                class="btnEditar"
               />
-          </li>
-          <li>
-            <h4>Breno Gonçalves</h4>
-            <p>breno.goncalves@impacta.com.br</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-                <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-                <img
-                  src="../imgs/icons/pencil-fill.svg"
-                  alt="icone de editar"
-                />
-              </div>
-          </li>
-          <li>
-            <h4>Breno Gonçalves</h4>
-            <p>breno.goncalves@impacta.com.br</p>
-            <h2>
-              <a href="#">Turma 2A</a>
-            </h2>
-            <div>
-              <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
-              <img
-                src="../imgs/icons/pencil-fill.svg"
-                alt="icone de editar"
-              />
+            </div>
           </li>
         </ul>
       </section>

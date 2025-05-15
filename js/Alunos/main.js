@@ -1,8 +1,7 @@
 /*FORMULARIO*/
-const inputIdAluno = document.getElementById("idAluno");
 const formulario = document.querySelector(".formulario");
+const inputIdAluno = document.getElementById("idAluno");
 const inputNomeAluno = document.getElementById("nomeAluno");
-const inputIdadeAluno = document.getElementById("idadeAluno");
 const inputNascimentoAluno = document.getElementById("nascimentoAluno");
 const inputNotaPrimeiroSemestre = document.getElementById(
   "notaPrimeiroSemestreInput"
@@ -12,50 +11,52 @@ const inputNotaSegundoSemestre = document.getElementById(
 );
 const inputTurma = document.getElementById("turmaSelect");
 const listaAlunos = document.querySelector(".lista-alunos");
+
 /*API*/
 import apiAlunos from "../Alunos/api.js";
 
-let alunos = [];
-
 formulario.addEventListener("submit", async (e) => {
-  console.log("Iniciando envio de dados...");
   e.preventDefault();
 
-  // Validação dos dados
-
-  const nota1 = parseFloat(inputNotaPrimeiroSemestre.value);
-  const nota2 = parseFloat(inputNotaSegundoSemestre.value);
-
   const aluno = {
+    id: inputIdAluno.value,
     nome: inputNomeAluno.value,
     data_nascimento: String(inputNascimentoAluno.value),
-    nota_primeiro_semestre: nota1,
-    nota_segundo_semestre: nota2,
+    nota_primeiro_semestre: Number(inputNotaPrimeiroSemestre.value),
+    nota_segundo_semestre: Number(inputNotaSegundoSemestre.value),
     turma_id: parseInt(inputTurma.value),
   };
 
-  criarCardAluno(aluno);
-  await adicionarAlunoNaApi(aluno);
+  console.log("Dados do aluno a serem enviados:", aluno);
+  await AdicionarOuEditarAluno(aluno);
 });
 
 function criarCardAluno(aluno) {
   console.log(aluno);
   console.log("funcionando parte 2.....");
   const li = document.createElement("li");
+
   /*CRIANDO NOME DO ALUNO*/
   const divInfoAluno = document.createElement("div");
   divInfoAluno.classList.add("lista-alunos-item");
   const h4Nome = document.createElement("h4");
+  h4Nome.textContent = "Nome: ";
   const spanNome = document.createElement("span");
   spanNome.id = "nome-aluno";
-  spanNome.textContent = aluno.nome;
+  spanNome.textContent = `${aluno.nome}`;
   h4Nome.appendChild(spanNome);
 
   /*CRIANDO IDADE DO ALUNO*/
+  let data = new Date();
   const h4Idade = document.createElement("h4");
+  h4Idade.textContent = "Idade: ";
   const spanIdade = document.createElement("span");
   spanIdade.id = "idade-aluno";
-  spanIdade.textContent = aluno.idade;
+  spanIdade.textContent =
+    data.toLocaleDateString("pt-br", { year: "numeric" }) -
+    new Date(aluno.data_nascimento).toLocaleDateString("pt-br", {
+      year: "numeric",
+    });
   h4Idade.appendChild(spanIdade);
   /*CRIANDO NOTAS DO ALUNO*/
   const h4Notas = document.createElement("h4");
@@ -65,7 +66,7 @@ function criarCardAluno(aluno) {
   spanNotaPrimeiroSemestre.textContent = `${aluno.nota_primeiro_semestre} | `;
   const spanNotaSegundoSemestre = document.createElement("span");
   spanNotaSegundoSemestre.id = "aluno-nota-semestre2";
-  spanNotaSegundoSemestre.textContent = aluno.nota_segundo_semestre;
+  spanNotaSegundoSemestre.textContent = `${aluno.nota_segundo_semestre}`;
   h4Notas.appendChild(spanNotaPrimeiroSemestre);
   h4Notas.appendChild(spanNotaSegundoSemestre);
 
@@ -90,15 +91,28 @@ function criarCardAluno(aluno) {
   divTurma.appendChild(h4Turma);
   const divIcons = document.createElement("div");
   const imgTrash = document.createElement("img");
+  imgTrash.onclick = async () => {
+    await apiAlunos.deleteAluno(aluno.id);
+    window.location.href = "./alunos.html";
+  };
   imgTrash.src = "../imgs/icons/trash.svg";
   imgTrash.alt = "icone de deletar";
 
   const imgEdit = document.createElement("img");
   imgEdit.src = "../imgs/icons/pencil-fill.svg";
   imgEdit.alt = "icone de editar";
+  imgEdit.classList.add("btnEditar");
+  imgEdit.onclick = () => {
+    inputIdAluno.value = aluno.id;
+    inputNomeAluno.value = aluno.nome;
+    inputNascimentoAluno.value = aluno.data_nascimento;
+    inputNotaPrimeiroSemestre.value = aluno.nota_primeiro_semestre;
+    inputNotaSegundoSemestre.value = aluno.nota_segundo_semestre;
+    inputTurma.value = aluno.turma_id;
+  };
+
   divIcons.appendChild(imgTrash);
   divIcons.appendChild(imgEdit);
-
   divTurma.appendChild(divIcons);
 
   divInfoAluno.appendChild(h4Nome);
@@ -121,15 +135,33 @@ async function adicionarAlunosNaLista() {
   });
 }
 
-async function adicionarAlunoNaApi(aluno) {
+async function AdicionarOuEditarAluno(aluno) {
   try {
-    const response = await apiAlunos.postAluno(aluno);
-    console.log("Aluno adicionado com sucesso:", response);
-    // Pequeno delay para garantir que a API processou a requisição
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return response;
+    if (aluno.id) {
+      const dadosDoAluno = {
+        nome: aluno.nome,
+        data_nascimento: aluno.data_nascimento,
+        nota_primeiro_semestre: Number(aluno.nota_primeiro_semestre),
+        nota_segundo_semestre: Number(aluno.nota_segundo_semestre),
+        turma_id: Number(aluno.turma_id),
+      };
+
+      console.log("Dados formatados para envio:", dadosDoAluno);
+      const response = await apiAlunos.putAluno(aluno.id, dadosDoAluno);
+      alert("Aluno editado com sucesso!");
+      window.location.href = "./alunos.html";
+      return response;
+    } else {
+      console.log("Dados do aluno para criação:", aluno);
+      const response = await apiAlunos.postAluno(aluno);
+      console.log("Aluno adicionado com sucesso:", response);
+      alert("Aluno adicionado com sucesso!");
+      criarCardAluno(aluno);
+      return response;
+    }
   } catch (error) {
-    console.error("Erro ao adicionar aluno:", error);
+    console.error("Erro ao adicionar ou editar aluno:", error);
+    alert(`Erro ao processar aluno: ${error.message}`);
     throw error;
   }
 }

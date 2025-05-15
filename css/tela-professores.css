@@ -62,6 +62,18 @@
   outline: none;
 }
 
+.formulario input[type="text"] {
+  width: 90%;
+  padding: 1rem;
+  margin: 0 auto;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 6px;
+  background-color: rgba(217, 217, 217, 0.1);
+  color: var(--cor-branca);
+  font-size: 1.2rem;
+  outline: none;
+}
+
 .btn-formulario-professor {
   margin: 3.5rem auto;
   width: 50%;
@@ -91,49 +103,42 @@
   margin: 0 1rem;
   overflow-y: scroll;
 }
-
 .lista-professores li {
-  width: 70%;
-  background-color: rgba(217, 217, 217, 0.01);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    " nome nome turma "
-    "ra ra icones";
-
+  grid-template-columns: 1fr auto;
+  margin: 0 auto;
+  width: 90%;
+  list-style: none;
   border: 2px solid var(--cor-primaria);
   border-radius: 6px;
-  padding: 2rem;
-  gap: 1.5rem;
+  padding: 2rem 0;
 }
 
-.lista-professores li h4 {
-  grid-area: nome;
+.professorIcones {
+  display: flex;
+  gap: 300rem;
 }
 
-.lista-professores li p {
-  grid-area: ra;
-}
-
-.lista-professores li h2 {
-  grid-area: turma;
-}
-
-.lista-professores li h2 a {
-  text-decoration: none;
-  color: var(--cor-branca);
+.professorIcones img {
+  width: 200%;
+  cursor: pointer;
 }
 
 .lista-professores li div {
-  grid-area: icones;
+  padding: 0rem 3rem;
+  width: 100%;
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+.lista-professores li div h4 {
+  font-size: 1.3rem;
+  color: var(--cor-primaria);
 }
 
-.lista-professores li div img {
-  width: 25%;
-  cursor: pointer;
+.lista-professores li div h4 span {
+  color: var(--cor-branca);
+  font-size: 1rem;
 }
 
 @media screen and (min-width: 830px) {

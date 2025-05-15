@@ -51,15 +51,6 @@
             required
           />
 
-          <label for="idade">Idade do Aluno</label>
-          <input
-            class="input-formulario"
-            type="text"
-            id="idadeAluno"
-            placeholder="Digite a idade"
-            required
-          />
-
           <label for="data-nascimento">Data de nascimento do Aluno</label>
           <input
             class="input-formulario"
@@ -104,12 +95,8 @@
         <ul class="lista-alunos">
           <li>
             <div class="lista-alunos-item">
-              <h4>
-                <span id="nome-aluno">Ezequiel Magoga</span>
-              </h4>
-              <h4>
-                <span id="idade-aluno">19</span>
-              </h4>
+              <h4>Nome: <span id="nome-aluno">Ezequiel Magoga</span></h4>
+              <h4>Idade: <span id="idade-aluno">19</span></h4>
               <h4>
                 Notas:
                 <span id="aluno-nota-semestre1">10</span> |
@@ -121,14 +108,13 @@
               </h4>
             </div>
             <div class="lista-alunos-item-turma">
-              <h4>
-                <span id="turma-aluno">Turma 2A</span>
-              </h4>
               <div>
                 <img src="../imgs/icons/trash.svg" alt="icone de deletar" />
                 <img
                   src="../imgs/icons/pencil-fill.svg"
                   alt="icone de editar"
+                  id="btnEditar"
+                  class="btnEditar"
                 />
               </div>
             </div>
