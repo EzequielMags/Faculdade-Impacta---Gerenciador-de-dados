@@ -3,118 +3,59 @@
   text-align: center;
 }
 
+.formulario select {
+  margin-left: 3rem;
+  width: 90%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #000;
+  border: 1px solid var(--cor-primaria);
+  border-radius: 6px;
+}
+
 .lista-Turmas {
   list-style-type: none;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
-  align-items: center;
-
+  height: 63.5vh;
   overflow-y: scroll;
 }
 
 .lista-Turmas li {
-  width: 95%;
-  padding: 5rem 1.5rem;
+  position: relative;
+  width: 90%;
+
+  padding: 0rem 5rem;
   border: 2px solid var(--cor-primaria);
   border-radius: 6px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "turma professor professor"
-    "alunos alunos icones";
-  gap: 3rem;
+  text-align: start;
 }
-
-.lista-turma-titulo {
-  grid-area: turma;
-}
-
-.lista-turma-professor {
-  grid-area: professor;
-}
-
-.lista-turma-icones {
-  grid-area: icones;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 1rem;
-  gap: 2.8rem;
-  place-items: center;
-}
-
-.lista-turma-icones img {
-  width: 25px;
-  cursor: pointer;
-}
-
-.lista-turma-alunos {
-  grid-area: alunos;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  overflow-y: scroll;
-}
-
-.lista-turma-alunos li {
-  border: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  list-style-type: none;
-}
-
-.lista-turma-alunos h4 {
+.lista-Turmas li h3 {
   color: var(--cor-primaria);
+  margin: 2rem 0;
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-align: start;
 }
 
-@media screen and (min-width: 830px) {
-  .lista-Turmas li {
-    width: 60%;
-    gap: 0.5rem;
-  }
-
-  .lista-turma-titulo {
-    font-size: 2rem;
-  }
-
-  .lista-turma-professor {
-    font-size: 1.5rem;
-  }
-
-  .lista-turma-alunos {
-    font-size: 1.3rem;
-  }
-
-  .lista-turma-icones {
-    grid-area: icones;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 1rem;
-    gap: 2.8rem;
-    place-items: center;
-  }
+.lista-Turmas li h3 span {
+  color: var(--cor-branca);
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
-@media screen and (min-width: 1024px) {
-  .lista-Turmas li {
-    gap: 0rem;
-  }
-  .lista-turma-titulo {
-    font-size: 1.1rem;
-  }
+.icons {
+  display: flex;
+  gap: 5rem;
+  position: absolute;
+  right: 100px;
+  bottom: 50px;
+}
 
-  .lista-turma-professor {
-    font-size: 1.1rem;
-  }
-
-  .lista-turma-alunos {
-    font-size: 0.8rem;
-  }
+.icons img {
+  width: 2rem;
 }

@@ -29,6 +29,7 @@ formulario.addEventListener("submit", async (e) => {
 
   console.log("Dados do aluno a serem enviados:", aluno);
   await AdicionarOuEditarAluno(aluno);
+  formulario.reset();
 });
 
 function criarCardAluno(aluno) {
@@ -53,10 +54,13 @@ function criarCardAluno(aluno) {
   const spanIdade = document.createElement("span");
   spanIdade.id = "idade-aluno";
   spanIdade.textContent =
-    data.toLocaleDateString("pt-br", { year: "numeric" }) -
+    data.toLocaleDateString("pt-br", {
+      year: "numeric",
+    }) -
     new Date(aluno.data_nascimento).toLocaleDateString("pt-br", {
       year: "numeric",
     });
+
   h4Idade.appendChild(spanIdade);
   /*CRIANDO NOTAS DO ALUNO*/
   const h4Notas = document.createElement("h4");
@@ -81,15 +85,14 @@ function criarCardAluno(aluno) {
   spanMedia.textContent = media;
   h4Media.appendChild(spanMedia);
 
-  const divTurma = document.createElement("div");
-  divTurma.classList.add("lista-alunos-item-turma");
   const h4Turma = document.createElement("h4");
+  h4Turma.textContent = "ID da Turma: ";
   const spanTurma = document.createElement("span");
   spanTurma.id = "turma-aluno";
-  spanTurma.textContent = aluno.turma;
+  spanTurma.textContent = aluno.turma_id;
   h4Turma.appendChild(spanTurma);
-  divTurma.appendChild(h4Turma);
   const divIcons = document.createElement("div");
+  divIcons.classList.add("container__icons");
   const imgTrash = document.createElement("img");
   imgTrash.onclick = async () => {
     await apiAlunos.deleteAluno(aluno.id);
@@ -113,16 +116,14 @@ function criarCardAluno(aluno) {
 
   divIcons.appendChild(imgTrash);
   divIcons.appendChild(imgEdit);
-  divTurma.appendChild(divIcons);
 
   divInfoAluno.appendChild(h4Nome);
   divInfoAluno.appendChild(h4Idade);
   divInfoAluno.appendChild(h4Notas);
   divInfoAluno.appendChild(h4Media);
-  divInfoAluno.appendChild(divTurma);
-
+  divInfoAluno.appendChild(h4Turma);
+  divInfoAluno.appendChild(divIcons);
   li.appendChild(divInfoAluno);
-  li.appendChild(divTurma);
 
   listaAlunos.appendChild(li);
 }

@@ -116,7 +116,6 @@
 
 .professorIcones {
   display: flex;
-  gap: 300rem;
 }
 
 .professorIcones img {
@@ -132,13 +131,15 @@
   gap: 1rem;
 }
 .lista-professores li div h4 {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
+  font-weight: 800;
   color: var(--cor-primaria);
 }
 
 .lista-professores li div h4 span {
   color: var(--cor-branca);
-  font-size: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 @media screen and (min-width: 830px) {

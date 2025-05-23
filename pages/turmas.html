@@ -34,69 +34,51 @@
         <form action="" class="formulario">
           <h3>Cadastre um novo professor</h3>
 
-          <input type="hidden" id="idTurma" />
+          <input type="hidden" id="IdDaTurmaInput" />
 
-          <label for="numero">Nome da turma</label>
+          <!--<label for="nome">Nome da turma</label>
           <input
             class="input-formulario"
             type="text"
-            id="numeroTurma"
+            id="nomeTurma"
             placeholder="Digite o nome da turma"
+            required
+          />-->
+
+          <label for="materia">Materia da turma</label>
+          <input
+            class="input-formulario"
+            type="text"
+            id="materiaTurma"
+            placeholder="Digite a materia da turma"
             required
           />
 
+          <label for="descricao">Descrição da turma</label>
+          <input
+            class="input-formulario"
+            type="text"
+            id="descricaoTurma"
+            placeholder="Digite a descricao da turma"
+            required
+          />
+
+          <label for="Ativo">Ativo </label>
+          <select name="ativo" id="ativoTurma">
+            <option value="true">Verdadeiro</option>
+            <option value="false">Falso</option>
+          </select>
+
+          <label for="professor">Professor </label>
+          <select name="professor" id="professorTurma">
+            <option value="">Selecione um professor</option>
+          </select>
           <input type="submit" value="Enviar" class="btn-formulario-aluno" />
         </form>
       </section>
       <section class="turma-secundario">
         <h3>Lista de Turmas</h3>
-        <ul class="lista-Turmas">
-          <li>
-            <h4 class="lista-turma-titulo">Turma 2A</h4>
-            <h4 class="lista-turma-professor">Professor: Breno Gonçalves</h4>
-            <ul class="lista-turma-alunos">
-              <h4>Alunos:</h4>
-              <li>
-                <p>Ezequiel Magoga</p>
-              </li>
-              <li>
-                <p>Ezequiel Magoga</p>
-              </li>
-              <li>
-                <p>Ezequiel Magoga</p>
-              </li>
-
-              <li>
-                <p>Ezequiel Magoga</p>
-              </li>
-
-              <li>
-                <p>Ezequiel Magoga</p>
-              </li>
-              <li>
-                <p>Ezequiel Magoga</p>
-              </li>
-            </ul>
-            <div class="lista-turma-icones">
-              <img src="../imgs/icons/trash.svg" alt="Icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="Icone de editar" />
-            </div>
-          </li>
-
-          <!--criando uma nova turma sem dados-->
-          <li>
-            <h4 class="lista-turma-titulo">Turma 2B</h4>
-            <h4 class="lista-turma-professor">Professor: Sem Professor</h4>
-            <ul class="lista-turma-alunos">
-              <h4>Alunos:</h4>
-            </ul>
-
-            <div class="lista-turma-icones">
-              <img src="../imgs/icons/trash.svg" alt="Icone de deletar" />
-              <img src="../imgs/icons/pencil-fill.svg" alt="Icone de editar" />
-            </div>
-          </li>
-        </ul>
+        <ul class="lista-Turmas"></ul>
       </section>
     </main>
   </body>

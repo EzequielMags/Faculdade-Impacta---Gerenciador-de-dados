@@ -2,7 +2,7 @@ const apiProfessores = {
   async getProfessores() {
     try {
       const api = await fetch(
-        "https://school-system-spi.onrender.com/api/professores/"
+        "https://school-system-spi.onrender.com/api/professores"
       );
       const response = await api.json();
       console.log(response);

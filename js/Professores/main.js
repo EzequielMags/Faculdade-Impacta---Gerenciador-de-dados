@@ -114,7 +114,9 @@ async function CriarCardProfessor(professor) {
   imgDelete.alt = "icone de deletar";
   imgDelete.id = "btnExcluir";
 
-  imgDelete.onclick = async () => {
+  imgDelete.onclick = async (event) => {
+    alert("testando");
+    event.preventDefault();
     await apiProfessores.deleteProfessor(professor.id);
     window.location.href = "./professores.html";
   };
@@ -141,11 +143,11 @@ async function CriarCardProfessor(professor) {
 }
 
 async function adicionarProfessoresNaLista() {
-  let professores = await apiProfessores.getProfessores();
-  console.log(professores);
+  const professores = await apiProfessores.getProfessores();
   professores.forEach((professor) => {
     CriarCardProfessor(professor);
   });
+  console.log(professores);
 }
 
 adicionarProfessoresNaLista();
