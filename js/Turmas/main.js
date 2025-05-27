@@ -2,62 +2,61 @@ import apiProfessores from "../Professores/api.js";
 import apiTurmas from "../Turmas/api.js";
 
 /*CONSTS*/
-const formulario = document.querySelector(".formulario");
-const idTurma = document.getElementById("IdDaTurmaInput");
-/*const nomeTurma = document.getElementById("nomeTurma");*/
+const formulario = document.getElementById("idFormulario");
+const idTurma = document.getElementById("idTurma");
+const nomeTurma = document.getElementById("nomeTurma");
 const materiaTurma = document.getElementById("materiaTurma");
 const descricaoTurma = document.getElementById("descricaoTurma");
 const ativoTurma = document.getElementById("ativoTurma");
 const professorTurma = document.getElementById("professorTurma");
-const ListaDeTurmas = document.querySelector(".lista-Turmas");
+const listaDeTurmas = document.querySelector(".lista-Turmas");
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("error");
+  adicionarTurmaNaLista();
   optionProfessor();
-  adicionarTurmasNaLista();
 });
 
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  const Turma = {
+  alert("Oi");
+  const turma = {
     id: Number(idTurma.value),
     materia: materiaTurma.value,
     descricao: descricaoTurma.value,
-    ativo: ativoTurma.value,
+    ativo: Boolean(ativoTurma.value),
     professor_id: Number(professorTurma.value),
   };
 
-  adicionarOuEditarTurma(Turma);
+  adicionarOuEditarTurma(turma);
 });
-
-async function adicionarTurmasNaLista() {
-  const turmas = await apiTurmas.getTurmas();
-  turmas.forEach((turma) => {
-    criarCardTurma(turma);
-  });
-}
 
 async function adicionarOuEditarTurma(turma) {
   try {
     if (turma.id) {
-      const response = await apiTurmas.putTurma(turma.id, turma);
+      const infoDaTurma = {
+        materia: turma.materia,
+        descricao: turma.descricao,
+        ativo: Boolean(turma.ativo),
+        professor_id: Number(turma.professor_id),
+      };
+      alert(turma);
 
+      const response = await apiTurmas.putTurma(turma.id, infoDaTurma);
       window.location.href = "./turmas.html";
       return response;
     } else {
-      console.log("dados da turma", turma);
       const response = await apiTurmas.postTurma(turma);
-      alert("Turma adicionada com sucesso");
-      criarCardTurma(response);
+      criarCard(turma);
       return response;
     }
   } catch (error) {
-    alert("Erro ao Editar ou Adicionar a Turma: " + error.message);
-    console.error("Erro completo:", error);
+    alert("erro ao Adicionar ou Editar turma");
+    console.log(error);
   }
 }
 
-function criarCardTurma(turma) {
+function criarCard(turma) {
   const card = document.createElement("li");
   /*NOME*/
   /*const nomeDaTurma = document.createElement("h3");
@@ -115,8 +114,10 @@ function criarCardTurma(turma) {
   iconeDeDeletar.src = "/imgs/icons/trash.svg";
   iconeDeDeletar.alt = "icone de deletar";
 
-  iconeDeDeletar.onclick = async (turma) => {
+  iconeDeDeletar.onclick = async () => {
+    console.log(turma.id);
     const response = await apiTurmas.deleteTurma(turma.id);
+    window.location.href = "./turmas.html";
     return response;
   };
 
@@ -124,13 +125,13 @@ function criarCardTurma(turma) {
   iconeDeEditar.src = "/imgs/icons/pencil-fill.svg";
   iconeDeEditar.alt = "icone de Editar";
 
-  iconeDeEditar.onclick = () => {
-    alert("oi");
-    idTurma.value = turma.id;
-    materiaTurma.value = turma.materia;
-    descricaoTurma.value = turma.descricao;
-    ativoTurma.value = turma.ativo;
-    professorTurma.value = turma.professor_id;
+  iconeDeEditar.onclick = async () => {
+    console.log(turma.id);
+    idTurma.value = await turma.id;
+    materiaTurma.value = await turma.materia;
+    descricaoTurma.value = await turma.descricao;
+    ativoTurma.value = await turma.ativo;
+    professorTurma.value = await turma.professor_id;
   };
 
   GrupoDeicones.appendChild(iconeDeDeletar);
@@ -143,19 +144,23 @@ function criarCardTurma(turma) {
   card.appendChild(professorDaTurma);
   card.appendChild(GrupoDeicones);
 
-  ListaDeTurmas.appendChild(card);
+  listaDeTurmas.appendChild(card);
 }
 
+async function adicionarTurmaNaLista() {
+  const turmas = await apiTurmas.getTurmas();
+  console.log(turmas);
+  turmas.forEach((turma) => {
+    criarCard(turma);
+  });
+}
 async function optionProfessor() {
   const professores = await apiProfessores.getProfessores();
-  const optionNenhum = document.createElement("option");
 
-  optionNenhum.textContent = "nenhum";
   professores.forEach((professor) => {
     const option = document.createElement("option");
     option.value = professor.id;
     option.textContent = professor.nome;
     professorTurma.appendChild(option);
   });
-  professorTurma.appendChild(optionNenhum);
 }

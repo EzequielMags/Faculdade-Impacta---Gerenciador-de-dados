@@ -24,21 +24,23 @@ const apiTurmas = {
   },
   async postTurma(turma) {
     try {
-      console.log("Enviando dados:", turma);
-      const api = await fetch(URLBASE, {
+      console.log("Dados sendo enviados:", turma);
+
+      const response = await fetch(URLBASE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(turma),
       });
 
-      const response = await api.json();
-      console.log("Resposta do servidor:", response);
-      return response;
+      const data = await response.json();
+      console.log("Resposta do servidor:", data);
+      return data;
     } catch (error) {
-      console.error("Erro detalhado:", error);
-      alert(`Erro ao Adicionar Turma: ${error.message}`);
+      console.error("Detalhes do erro:", error);
+      alert(`Erro ao salvar a turma: ${error.message}`);
       throw error;
     }
   },
@@ -47,7 +49,7 @@ const apiTurmas = {
       const api = await fetch(`${URLBASE}/${id_turma}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application.json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(turma),
       });
@@ -55,8 +57,7 @@ const apiTurmas = {
       console.log(response);
       return response;
     } catch (error) {
-      alert("Erro ao editar turma");
-      console.log(error);
+      alert("Erro ao editar ", error);
     }
   },
   async deleteTurma(id_turma) {

@@ -53,7 +53,6 @@ async function AdicionarOuEditarProfessor(professor) {
     }
   } catch (error) {
     alert("erro ao Editar ou Adicionar o Professor", error);
-
     console.error(error);
   }
 }
@@ -125,12 +124,12 @@ async function CriarCardProfessor(professor) {
   imgEdit.src = "../imgs/icons/pencil-fill.svg";
   imgEdit.alt = "icone de editar";
   imgEdit.id = "btnEditar";
-  imgEdit.onclick = () => {
-    idProfessorInput.value = professor.id;
-    nomeProfessorInput.value = professor.nome;
-    idadeProfessorInput.value = professor.idade;
-    materiaProfessorInput.value = professor.materia;
-    observacaoProfessorInput.value = professor.observacoes;
+  imgEdit.onclick = async () => {
+    idProfessorInput.value = await professor.id;
+    nomeProfessorInput.value = await professor.nome;
+    idadeProfessorInput.value = await professor.idade;
+    materiaProfessorInput.value = await professor.materia;
+    observacaoProfessorInput.value = await professor.observacoes;
   };
 
   divIcones.appendChild(imgDelete);

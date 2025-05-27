@@ -14,6 +14,12 @@ const listaAlunos = document.querySelector(".lista-alunos");
 
 /*API*/
 import apiAlunos from "../Alunos/api.js";
+import apiTurmas from "../Turmas/api.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  adicionarAlunosNaLista();
+  optionTurma();
+});
 
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -46,20 +52,19 @@ function criarCardAluno(aluno) {
   spanNome.id = "nome-aluno";
   spanNome.textContent = `${aluno.nome}`;
   h4Nome.appendChild(spanNome);
+  /*CRIANDO A IDADE DO ALUNO*/
+  /*calculo para encontrar a idade correta*/
+  const dataNascimentoUsuario = new Date(aluno.data_nascimento);
+  const dataDeHoje = new Date();
+  const diferencaTempo = dataDeHoje.getTime() - dataNascimentoUsuario.getTime();
+  const idadeDate = new Date(diferencaTempo);
+  let idadeCalculada = Math.abs(idadeDate.getUTCFullYear() - 1970);
 
-  /*CRIANDO IDADE DO ALUNO*/
-  let data = new Date();
   const h4Idade = document.createElement("h4");
   h4Idade.textContent = "Idade: ";
   const spanIdade = document.createElement("span");
   spanIdade.id = "idade-aluno";
-  spanIdade.textContent =
-    data.toLocaleDateString("pt-br", {
-      year: "numeric",
-    }) -
-    new Date(aluno.data_nascimento).toLocaleDateString("pt-br", {
-      year: "numeric",
-    });
+  spanIdade.textContent = idadeCalculada;
 
   h4Idade.appendChild(spanIdade);
   /*CRIANDO NOTAS DO ALUNO*/
@@ -79,9 +84,7 @@ function criarCardAluno(aluno) {
   const spanMedia = document.createElement("span");
   spanMedia.id = "aluno-nota-media";
   let media = (aluno.nota_primeiro_semestre + aluno.nota_segundo_semestre) / 2;
-  console.log(aluno.nota_primeiro_semestre);
-  console.log(aluno.nota_segundo_semestre);
-  console.log(media);
+
   spanMedia.textContent = media;
   h4Media.appendChild(spanMedia);
 
@@ -105,13 +108,13 @@ function criarCardAluno(aluno) {
   imgEdit.src = "../imgs/icons/pencil-fill.svg";
   imgEdit.alt = "icone de editar";
   imgEdit.classList.add("btnEditar");
-  imgEdit.onclick = () => {
-    inputIdAluno.value = aluno.id;
-    inputNomeAluno.value = aluno.nome;
-    inputNascimentoAluno.value = aluno.data_nascimento;
-    inputNotaPrimeiroSemestre.value = aluno.nota_primeiro_semestre;
-    inputNotaSegundoSemestre.value = aluno.nota_segundo_semestre;
-    inputTurma.value = aluno.turma_id;
+  imgEdit.onclick = async () => {
+    inputIdAluno.value = await aluno.id;
+    inputNomeAluno.value = await aluno.nome;
+    inputNascimentoAluno.value = await aluno.data_nascimento;
+    inputNotaPrimeiroSemestre.value = await aluno.nota_primeiro_semestre;
+    inputNotaSegundoSemestre.value = await aluno.nota_segundo_semestre;
+    inputTurma.value = await aluno.turma_id;
   };
 
   divIcons.appendChild(imgTrash);
@@ -167,4 +170,13 @@ async function AdicionarOuEditarAluno(aluno) {
   }
 }
 
-adicionarAlunosNaLista();
+async function optionTurma() {
+  const turmas = await apiTurmas.getTurmas();
+  turmas.forEach((turma) => {
+    const option = document.createElement("option");
+    option.value = turma.id;
+    option.textContent = turma.materia;
+    console.log(option);
+    inputTurma.appendChild(option);
+  });
+}
