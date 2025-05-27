@@ -93,7 +93,7 @@
 
 .lista-alunos li {
   width: 90%;
-  height: 5vh;
+  height: 56%;
   list-style: none;
   border: 2px solid var(--cor-primaria);
   border-radius: 6px;
@@ -170,7 +170,6 @@
   .lista-alunos li {
     padding: 3rem 0;
     width: 90%;
-    height: 40%;
   }
 }
 
@@ -226,7 +225,6 @@
 
 @media screen and (min-width: 1400px) {
   .lista-alunos li {
-    height: 39%;
     width: 90%;
     margin: 0 auto;
   }
