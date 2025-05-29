@@ -1,5 +1,31 @@
 /*Cabecalho*/
 
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateX(0px);
+  }
+}
+
 .cabecalho {
   position: relative;
   display: flex;
@@ -36,6 +62,8 @@
   border: 2px solid var(--cor-primaria);
   border-radius: 6px;
   padding: 1rem;
+
+  animation: fade-in-left 1s ease-in-out;
 }
 
 .formulario h3 {
@@ -89,6 +117,7 @@
   gap: 2rem;
   justify-content: center;
   margin: 0 1rem;
+  animation: fade-in-right 1s ease-in-out;
 }
 .btn-icon {
   background-color: transparent;

@@ -1,3 +1,16 @@
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateX(0px);
+  }
+}
+
 /*Cabecalho*/
 
 .cabecalho {
@@ -102,6 +115,7 @@
   justify-content: center;
   margin: 0 1rem;
   overflow-y: scroll;
+  animation: fade-in-right 1s ease-in-out;
 }
 .lista-professores li {
   display: flex;
