@@ -43,10 +43,12 @@ async function adicionarOuEditarTurma(turma) {
 
       console.log(turma.ativo);
       const response = await apiTurmas.putTurma(turma.id, infoDaTurma);
+      alert("Turma editado com sucesso");
       window.location.href = "./turmas.html";
       return response;
     } else {
       const response = await apiTurmas.postTurma(turma);
+      alert("Turma criada com sucesso");
       criarCard(turma);
       return response;
     }
@@ -119,6 +121,7 @@ function criarCard(turma) {
   btnDelete.onclick = async () => {
     console.log(turma.id);
     const response = await apiTurmas.deleteTurma(turma.id);
+    alert("Turma excluida com sucesso");
     window.location.href = "./turmas.html";
     return response;
   };

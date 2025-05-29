@@ -25,6 +25,8 @@ formulario.addEventListener("submit", async (event) => {
   };
 
   AdicionarOuEditarProfessor(professor);
+
+  formulario.reset();
 });
 
 async function AdicionarOuEditarProfessor(professor) {

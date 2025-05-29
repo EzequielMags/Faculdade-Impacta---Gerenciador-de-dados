@@ -65,10 +65,10 @@ body {
 }
 
 .menu-bar {
-  height: 100vh;
+  height: 100%;
   width: 30%;
   background-color: #1f1f1f;
-  border-left: 1px solid var(--cor-primaria);
+  border-left: 4px solid var(--cor-primaria);
   position: absolute;
   right: 0;
   top: 0;
@@ -109,4 +109,8 @@ body {
 
 .block {
   animation: menu-block 1s ease-in-out forwards;
+}
+
+.ativo {
+  background-color: #0189f9;
 }
