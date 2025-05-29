@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
-  alert("Oi");
+
   const turma = {
     id: Number(idTurma.value),
     materia: materiaTurma.value,
@@ -40,7 +40,6 @@ async function adicionarOuEditarTurma(turma) {
         ativo: Boolean(turma.ativo),
         professor_id: Number(turma.professor_id),
       };
-      alert(turma);
 
       const response = await apiTurmas.putTurma(turma.id, infoDaTurma);
       window.location.href = "./turmas.html";
@@ -110,22 +109,26 @@ function criarCard(turma) {
   const GrupoDeicones = document.createElement("div");
   GrupoDeicones.classList.add("icons");
 
+  const btnDelete = document.createElement("button");
+  btnDelete.classList.add("btn-icon-turma");
   const iconeDeDeletar = document.createElement("img");
   iconeDeDeletar.src = "/imgs/icons/trash.svg";
   iconeDeDeletar.alt = "icone de deletar";
-
-  iconeDeDeletar.onclick = async () => {
+  btnDelete.appendChild(iconeDeDeletar);
+  btnDelete.onclick = async () => {
     console.log(turma.id);
     const response = await apiTurmas.deleteTurma(turma.id);
     window.location.href = "./turmas.html";
     return response;
   };
 
+  const btnEditar = document.createElement("button");
+  btnEditar.classList.add("btn-icon-turma");
   const iconeDeEditar = document.createElement("img");
   iconeDeEditar.src = "/imgs/icons/pencil-fill.svg";
   iconeDeEditar.alt = "icone de Editar";
-
-  iconeDeEditar.onclick = async () => {
+  btnEditar.appendChild(iconeDeEditar);
+  btnEditar.onclick = async () => {
     console.log(turma.id);
     idTurma.value = await turma.id;
     materiaTurma.value = await turma.materia;
@@ -134,8 +137,8 @@ function criarCard(turma) {
     professorTurma.value = await turma.professor_id;
   };
 
-  GrupoDeicones.appendChild(iconeDeDeletar);
-  GrupoDeicones.appendChild(iconeDeEditar);
+  GrupoDeicones.appendChild(btnDelete);
+  GrupoDeicones.appendChild(btnEditar);
 
   /*card.appendChild(nomeDaTurma);*/
   card.appendChild(materiaDaTurma);

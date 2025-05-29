@@ -90,6 +90,10 @@
   justify-content: center;
   margin: 0 1rem;
 }
+.btn-icon {
+  background-color: transparent;
+  border: none;
+}
 
 .lista-alunos li {
   width: 90%;

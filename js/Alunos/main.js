@@ -96,19 +96,25 @@ function criarCardAluno(aluno) {
   h4Turma.appendChild(spanTurma);
   const divIcons = document.createElement("div");
   divIcons.classList.add("container__icons");
+  const btnTrash = document.createElement("button");
+  btnTrash.classList.add("btn-icon");
   const imgTrash = document.createElement("img");
-  imgTrash.onclick = async () => {
+  imgTrash.src = "../imgs/icons/trash.svg";
+  imgTrash.alt = "icone de deletar";
+  btnTrash.onclick = async () => {
     await apiAlunos.deleteAluno(aluno.id);
     window.location.href = "./alunos.html";
   };
-  imgTrash.src = "../imgs/icons/trash.svg";
-  imgTrash.alt = "icone de deletar";
+  btnTrash.appendChild(imgTrash);
 
+  const btnEdit = document.createElement("button");
+  btnEdit.classList.add("btn-icon");
   const imgEdit = document.createElement("img");
   imgEdit.src = "../imgs/icons/pencil-fill.svg";
   imgEdit.alt = "icone de editar";
   imgEdit.classList.add("btnEditar");
-  imgEdit.onclick = async () => {
+  btnEdit.appendChild(imgEdit);
+  btnEdit.onclick = async () => {
     inputIdAluno.value = await aluno.id;
     inputNomeAluno.value = await aluno.nome;
     inputNascimentoAluno.value = await aluno.data_nascimento;
@@ -117,8 +123,8 @@ function criarCardAluno(aluno) {
     inputTurma.value = await aluno.turma_id;
   };
 
-  divIcons.appendChild(imgTrash);
-  divIcons.appendChild(imgEdit);
+  divIcons.appendChild(btnTrash);
+  divIcons.appendChild(btnEdit);
 
   divInfoAluno.appendChild(h4Nome);
   divInfoAluno.appendChild(h4Idade);

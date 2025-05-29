@@ -16,8 +16,7 @@
 .lista-Turmas {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
@@ -26,13 +25,11 @@
 }
 
 .lista-Turmas li {
-  position: relative;
   width: 90%;
 
   padding: 0rem 5rem;
   border: 2px solid var(--cor-primaria);
   border-radius: 6px;
-  text-align: start;
 }
 .lista-Turmas li h3 {
   color: var(--cor-primaria);
@@ -48,12 +45,15 @@
   font-weight: 600;
 }
 
+.btn-icon-turma {
+  background-color: transparent;
+  border: none;
+  margin: 2rem 0;
+}
+
 .icons {
   display: flex;
   gap: 5rem;
-  position: absolute;
-  right: 100px;
-  bottom: 50px;
 }
 
 .icons img {

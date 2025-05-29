@@ -60,6 +60,7 @@ async function AdicionarOuEditarProfessor(professor) {
 async function CriarCardProfessor(professor) {
   const li = document.createElement("li");
   const div = document.createElement("div");
+  div.classList.add("prof-info");
   /*H4 DO NOME*/
   const h4Nome = document.createElement("h4");
   h4Nome.textContent = "Nome do professor: ";
@@ -108,23 +109,26 @@ async function CriarCardProfessor(professor) {
   const divIcones = document.createElement("div");
   divIcones.classList.add("professorIcones");
 
+  const btnDelete = document.createElement("button");
+  btnDelete.classList.add("btn-icon-professor");
   const imgDelete = document.createElement("img");
   imgDelete.src = "../imgs/icons/trash.svg";
   imgDelete.alt = "icone de deletar";
   imgDelete.id = "btnExcluir";
-
-  imgDelete.onclick = async (event) => {
-    alert("testando");
-    event.preventDefault();
+  btnDelete.appendChild(imgDelete);
+  btnDelete.onclick = async () => {
     await apiProfessores.deleteProfessor(professor.id);
     window.location.href = "./professores.html";
   };
 
+  const btnEdit = document.createElement("button");
+  btnEdit.classList.add("btn-icon-professor");
   const imgEdit = document.createElement("img");
   imgEdit.src = "../imgs/icons/pencil-fill.svg";
   imgEdit.alt = "icone de editar";
   imgEdit.id = "btnEditar";
-  imgEdit.onclick = async () => {
+  btnEdit.appendChild(imgEdit);
+  btnEdit.onclick = async () => {
     idProfessorInput.value = await professor.id;
     nomeProfessorInput.value = await professor.nome;
     idadeProfessorInput.value = await professor.idade;
@@ -132,8 +136,8 @@ async function CriarCardProfessor(professor) {
     observacaoProfessorInput.value = await professor.observacoes;
   };
 
-  divIcones.appendChild(imgDelete);
-  divIcones.appendChild(imgEdit);
+  divIcones.appendChild(btnDelete);
+  divIcones.appendChild(btnEdit);
 
   li.appendChild(div);
   li.appendChild(divIcones);
