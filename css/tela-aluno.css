@@ -160,7 +160,6 @@
 
   /*Lista de Alunos*/
   .lista-alunos {
-    height: 68vh;
     overflow-y: scroll;
   }
   ::-webkit-scrollbar {

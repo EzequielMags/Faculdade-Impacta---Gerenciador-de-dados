@@ -112,7 +112,7 @@ function criarCard(turma) {
   const btnDelete = document.createElement("button");
   btnDelete.classList.add("btn-icon-turma");
   const iconeDeDeletar = document.createElement("img");
-  iconeDeDeletar.src = "/imgs/icons/trash.svg";
+  iconeDeDeletar.src = "../imgs/icons/trash.svg";
   iconeDeDeletar.alt = "icone de deletar";
   btnDelete.appendChild(iconeDeDeletar);
   btnDelete.onclick = async () => {
@@ -125,7 +125,7 @@ function criarCard(turma) {
   const btnEditar = document.createElement("button");
   btnEditar.classList.add("btn-icon-turma");
   const iconeDeEditar = document.createElement("img");
-  iconeDeEditar.src = "/imgs/icons/pencil-fill.svg";
+  iconeDeEditar.src = "../imgs/icons/pencil-fill.svg";
   iconeDeEditar.alt = "icone de Editar";
   btnEditar.appendChild(iconeDeEditar);
   btnEditar.onclick = async () => {
