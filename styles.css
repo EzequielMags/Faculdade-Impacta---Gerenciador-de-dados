@@ -114,3 +114,19 @@ body {
 .ativo {
   background-color: #0189f9;
 }
+
+@media screen and (max-width: 500px) {
+  .menu-bar {
+    width: 80%;
+  }
+
+  .menu-bar img {
+    width: 5%;
+    top: 50px;
+    right: 50px;
+  }
+
+  .menu-bar div a {
+    font-size: 0.5rem;
+  }
+}
