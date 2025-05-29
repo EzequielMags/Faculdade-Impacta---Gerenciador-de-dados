@@ -10,12 +10,13 @@
     href="../imgs/icons/reitor.png"
     type="image/x-icon"
   />
+    <script src="../script.js" defer></script>
     <script src="../js/Professores/main.js" type="module" defer></script>
   <body>
     <header class="cabecalho">
       <div class="cabecalho-titulo">
         <h2>Professores</h2>
-        <img src="../imgs/icons/school.png" alt="Icone de professores" />
+        <img src="../imgs/icons/group.png" alt="Icone de Turmas" />
       </div>
       <img
         src="../imgs/image 1.png"
@@ -23,15 +24,27 @@
         class="cabecalho-logo"
       />
       <div class="cabecalho-menu">
-        <img src="../imgs/icons/menu.png" alt="Icone de busca" />
-        <div>
-          <a href="../index.html">home</a>
-          <a href="./alunos.html">alunos</a>
-          <a href="./professores.html" class="ativo">professores</a>
-          <a href="./turmas.html">turmas</a>
-        </div>
+        <img
+          src="../imgs/icons/menu.png"
+          alt="Icone de busca"
+          id="menu-bar-block"
+        />
       </div>
     </header>
+
+    <aside class="menu-bar hidden">
+      <img
+        src="../imgs/icons/close.png"
+        alt="icone de fechar"
+        id="close-menu"
+      />
+      <div>
+        <a href="../index.html">home</a>
+        <a href="./alunos.html">alunos</a>
+        <a href="./professores.html">professores</a>
+        <a href="./turmas.html" class="ativo">turmas</a>
+      </div>
+    </aside>
 
     <main>
       <section class="professores-principal">

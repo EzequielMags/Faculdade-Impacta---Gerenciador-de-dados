@@ -35,6 +35,9 @@
   display: none;
 }
 
+/*ASIDE - MENU*/
+aside {
+}
 /*Principal professores*/
 
 /*Formulario*/
@@ -230,7 +233,7 @@
   }
 
   .cabecalho-menu img {
-    display: none;
+    display: block;
   }
   /*Principal professores*/
   main {

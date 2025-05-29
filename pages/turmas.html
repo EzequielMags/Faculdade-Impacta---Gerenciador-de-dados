@@ -10,6 +10,7 @@
       href="../imgs/icons/mesa.png"
       type="image/x-icon"
     />
+    <script src="../script.js" defer></script>
     <script src="../js/Turmas/main.js" defer type="module"></script>
   </head>
   <body>
@@ -24,16 +25,27 @@
         class="cabecalho-logo"
       />
       <div class="cabecalho-menu">
-        <img src="../imgs/icons/menu.png" alt="Icone de busca" />
-        <div>
-          <a href="../index.html">home</a>
-          <a href="./alunos.html">alunos</a>
-          <a href="./professores.html">professores</a>
-          <a href="./turmas.html" class="ativo">turmas</a>
-        </div>
+        <img
+          src="../imgs/icons/menu.png"
+          alt="Icone de busca"
+          id="menu-bar-block"
+        />
       </div>
     </header>
 
+    <aside class="menu-bar hidden">
+      <img
+        src="../imgs/icons/close.png"
+        alt="icone de fechar"
+        id="close-menu"
+      />
+      <div>
+        <a href="../index.html">home</a>
+        <a href="./alunos.html">alunos</a>
+        <a href="./professores.html">professores</a>
+        <a href="./turmas.html" class="ativo">turmas</a>
+      </div>
+    </aside>
     <main>
       <section class="turma-principal">
         <form action="" class="formulario" id="idFormulario">

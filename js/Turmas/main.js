@@ -41,6 +41,7 @@ async function adicionarOuEditarTurma(turma) {
         professor_id: Number(turma.professor_id),
       };
 
+      console.log(turma.ativo);
       const response = await apiTurmas.putTurma(turma.id, infoDaTurma);
       window.location.href = "./turmas.html";
       return response;
@@ -91,10 +92,10 @@ function criarCard(turma) {
   const spanAtivoDaTurma = document.createElement("span");
   spanAtivoDaTurma.id = "ativoDaTurma";
 
-  if (turma.ativo) {
-    spanAtivoDaTurma.textContent = "Ativado";
-  } else {
+  if (turma.ativo == false) {
     spanAtivoDaTurma.textContent = "Desativado";
+  } else {
+    spanAtivoDaTurma.textContent = "Ativado";
   }
   ativoDaTurma.appendChild(spanAtivoDaTurma);
 
